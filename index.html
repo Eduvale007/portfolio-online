@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduardo | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">E<span>D</span></div>
+    
+    <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+
+    <nav class="nav-list">
+        <a href="#home" data-i18n="nav_home">Home</a>
+        <a href="#about" id="btn-about" data-i18n="nav_about">About</a>
+        <a href="#projects" data-i18n="nav_projects">Projects</a>
+        <a href="#skills" data-i18n="nav_skills">Skills</a>
+    </nav>
+    
+    <div class="social-icons">
+        <a href="https://www.linkedin.com/in/eduardoandrade007/" class="icon-linkedin"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/Eduvale007" class="icon-github"><i class="fab fa-github"></i></a>
+    </div>
+</header>
+
+<div class="sidebar-social">
+    <a href="https://www.linkedin.com/in/eduardoandrade007/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://github.com/Eduvale007" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="mailto:eduvale007@gmail.com" title="E-mail"><i class="fas fa-envelope"></i></a>
+    <div class="sidebar-line"></div>
+</div>
+
+<section class="hero" id="home">
+    <div class="hero-background-overlay"></div>
+    
+    <div class="hero-container">
+        <div class="profile-img-container">
+            <img src="images/eu-linkdin.jpeg" alt="Eduardo" class="profile-img">
+        </div>
+        
+        <div class="hero-text">
+            <div class="tech-tags">
+                <span class="badge">Python ></span>
+                <span class="badge" data-i18n="badge_automation">Automation ></span>
+            </div>
+            <h1 data-i18n="hero_title">BUILDING INNOVATIVE DIGITAL SOLUTIONS</h1>
+            <p data-i18n="hero_desc">Hi, I'm Eduardo. A passionate Full Stack Developer specializing in robust applications and modern experiences.</p>
+            
+            <div class="hero-btns">
+                <a href="#projects" class="btn-primary" data-i18n="btn_projects">VIEW PROJECTS</a>
+                <a target="_blank" href="assets/curriculo_ed.pdf" download="Curriculo_Eduardo.pdf" class="btn-secondary" style="text-decoration: none; display: flex; align-items: center;" data-i18n="btn_resume">
+                    DOWNLOAD RESUME
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="projects" id="projects">
+    <div class="section-title">
+        <h2 data-i18n="proj_section_title">Featured Projects</h2>
+    </div>
+    <div class="project-grid">
+      
+        <div class="project-card">
+            <div class="card-banner">
+                <img src="images/chopp-main.png" alt="E-commerce Platform">
+            </div>
+            <div class="card-info">
+                <h3 data-i18n="proj1_title">Plataforma de E-commerce</h3>
+                <p data-i18n="proj1_desc">Reengenharia completa de uma plataforma de vendas e distribuição.</p>
+                <div class="card-btns">
+                    <a href="https://chopponline.com/" target="_blank" class="btn-sm primary" data-i18n="btn_live">View Live</a>
+                    <a href="https://github.com/Eduvale007/Chopp-Online" target="_blank" class="btn-sm outline" data-i18n="btn_code">Code</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="card-banner">
+                <img src="images/icon.png" alt="Task Management App">
+            </div>
+            <div class="card-info">
+                <h3 data-i18n="proj2_title">Bookie App</h3>
+                <p data-i18n="proj2_desc">Aplicativo focado em produtividade com sincronização em tempo real.</p>
+                <div class="card-btns">
+                    <a href="https://bookie.tec.br/" target="_blank" class="btn-sm primary" data-i18n="btn_live">View Live</a>
+                    <a href="https://github.com/Eduvale007/bookie-privacy-policy" target="_blank" class="btn-sm outline" data-i18n="btn_code">Code</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="card-banner">
+                <img src="images/grafico.png" alt="AI Dashboard">
+            </div>
+            <div class="card-info">
+                <h3 data-i18n="proj3_title">GestãoPro | AI-Powered </h3>
+                <p data-i18n="proj3_desc">Dashboard analítico com predição de demanda para otimização de estoque.</p>
+                <div class="card-btns">
+                    <a href="https://eduvale007.github.io/academic-showcase/" target="_blank" class="btn-sm primary" data-i18n="btn_live">View Live</a>
+                    <a href="https://github.com/Eduvale007/ProjetoCC_4Semestre" target="_blank" class="btn-sm outline" data-i18n="btn_code">Code</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="skills-section" id="skills">
+    <div class="skills-bg-overlay"></div> 
+    <div class="skills-content"> 
+        <div class="section-title">
+            <h2 data-i18n="skills_title">Skills & Expertise</h2>
+        </div>
+        <div class="skills-container">
+            <div class="skill-card">
+                <div class="icon-box" style="--icon-color: #f7df1e;"><i class="fab fa-js-square"></i></div>
+                <span>JS</span>
+            </div>
+            <div class="skill-card">
+                <div class="icon-box" style="--icon-color: #f05032;"><i class="fab fa-git-alt"></i></div>
+                <span>Git</span>
+            </div>
+            <div class="skill-card">
+                <div class="icon-box" style="--icon-color: #3776ab;"><i class="fab fa-python"></i></div>
+                <span>Python</span>
+            </div>
+            <div class="skill-card">
+                <div class="icon-box" style="--icon-color: #00CCAF;"><i class="fas fa-gem"></i></div>
+                <span>Dart</span>
+            </div>
+            <div class="skill-card">
+                <div class="icon-box" style="--icon-color: #0078d4;"><i class="fas fa-cloud"></i></div>
+                <span>Cloud</span>
+            </div>
+            <div class="skill-card">
+                <div class="icon-box" style="--icon-color: #f29111;"><i class="fas fa-database"></i></div>
+                <span>SQL</span>
+            </div>
+            <div class="skill-card">
+                <div class="icon-box" style="--icon-color: #2496ed;"><i class="fas fa-server"></i></div>
+                <span>DevOps</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="app.js"></script>
+<script src="lang.js"></script>
+</body>
+</html>

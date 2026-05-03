@@ -1,0 +1,626 @@
+:root {
+    --bg-dark: #06090c;       
+    --card-bg: #111820;       
+    --accent-cyan: #00f2ff;
+    --text-gray: #a0aec0;
+    --white: #ffffff;
+}
+
+:root{
+  --primary-color: #ff007f;
+  --secondary-color: #f44336;
+  --tertiary-color:#fc0000;
+  --quaternary-color: rgba(0, 0, 0, 0.5);  
+  --quinary-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- Personalização da Scrollbar --- */
+
+/* 1. Largura da barra */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* 2. Fundo da barra (Track) */
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+/* 3. O "pegador" da barra (Thumb) */
+::-webkit-scrollbar-thumb {
+    background: #1a222a; /* Cor um pouco mais clara que o fundo */
+    border-radius: 10px;
+    border: 2px solid var(--bg-dark); /* Cria um respiro em volta do thumb */
+    transition: 0.3s;
+}
+
+/* 4. Thumb quando você passa o mouse */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-cyan);
+    box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+/* Para Firefox (suporte limitado, mas importante) */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #1a222a var(--bg-dark);
+}
+
+/* --- Header & Navigation --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 8%;
+    align-items: center;
+    position: fixed; 
+    width: 100%;
+    background: rgba(6, 9, 12, 0.8);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+}
+
+.social-icons a {
+    font-size: 1.2rem;
+    color: var(--text-gray); /* Cor padrão do seu header */
+    margin-left: 15px;
+    transition: 0.3s ease;
+}
+
+/* LinkedIn - Azul oficial */
+.social-icons a.icon-linkedin:hover {
+    color:  var(--white);;
+    transform: translateY(-3px);
+}
+
+/* GitHub - Branco ou Cinza Claro (já que o fundo é escuro) */
+.social-icons a.icon-github:hover {
+    color: var(--white);
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+    transform: translateY(-3px);
+}
+
+
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.logo span { color: var(--accent-cyan); }
+
+nav a {
+    color: var(--text-gray);
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav a:hover { color: var(--accent-cyan); }
+
+.menu-toggle {
+    display: none; /* Esconde no PC */
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px; /* Espaço entre as barras */
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--white); /* Se não tiver essa cor, elas ficam invisíveis */
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+/* --- Hero Section --- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 5%;
+    position: relative; 
+    
+    background-image: url('images/imagem-fundo-port.png'); 
+    background-size: cover;    
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    
+    overflow: hidden;
+}
+
+.hero-background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(6, 9, 12, 0.65); 
+    z-index: 1; 
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2; 
+    background: var(--card-bg); /* Fundo sólido para não vazar o brilho */
+    border-radius: 24px;
+    padding: 40px; 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    max-width: 920px; 
+    width: 90%;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    
+    /* SEGREDINHO: Esconder o que sobrar da animação */
+    overflow: hidden; 
+    border: 1px solid rgba(0, 242, 255, 0.2); /* Borda base discreta */
+}
+
+/* A "Luz" que vai girar atrás */
+.hero-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        transparent, 
+        transparent, 
+        transparent, 
+        var(--accent-cyan)
+    );
+    animation: rotate-border 4s linear infinite;
+    z-index: -2;
+}
+
+/* O fundo interno para cobrir o centro da animação */
+.hero-container::after {
+    content: '';
+    position: absolute;
+    inset: 2px; /* Espessura da borda (2px) */
+    background: var(--card-bg);
+    border-radius: 22px; /* Um pouco menor que o container */
+    z-index: -1;
+}
+
+/* Animação de Rotação */
+@keyframes rotate-border {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.profile-img-container {
+    flex-shrink: 0;
+    padding: 8px; 
+    border: 1px solid rgba(0, 242, 255, 0.3); 
+    border-radius: 20px;
+}
+
+.profile-img {
+    width: 250px; 
+    height: 330px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}
+
+.hero-text {
+    flex: 1;
+    text-align: left; 
+}
+
+.hero-text h1 {
+    font-size: 2.6rem; 
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 12px 0;
+    letter-spacing: -1px;
+}
+
+.hero-text h1, .hero-text p {
+    transition: opacity 0.3s ease; /* Faz o texto sumir e aparecer suavemente */
+}
+
+.hero-text p {
+    color: var(--text-gray);
+    font-size: 1rem;
+    margin-bottom: 25px;
+    max-width: 450px;
+}
+
+.tech-tags {
+    display: flex;
+    gap: 10px;
+}
+
+.badge {
+    color: var(--accent-cyan);
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 0.8rem;
+    background: rgba(0, 242, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+/* --- Botões Hero --- */
+.hero-btns {
+    display: flex;
+    gap: 15px;
+}
+
+.hero-btns a:hover {
+    text-decoration: none; /* Remove o sublinhado de link */
+    display: inline-flex;  /* Permite alinhar o texto no centro */
+    justify-content: center;
+    align-items: center;
+    /* Os outros estilos como padding e border-radius já devem estar nas classes btn-primary/secondary */
+}
+
+.btn-primary {
+    background: transparent;
+    border: 2px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background: var(--accent-cyan);
+    color: var(--bg-dark);
+    box-shadow: 0 0 25px var(--accent-cyan);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Borda padrão discreta */
+    color: var(--white);
+    padding: 10px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    transition: all 0.3s ease; /* Transição suave para a borda e cor */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+/* O MICRO TRABALHO: Hover na borda ficando branco */
+.btn-secondary:hover {
+    border-color: #ffffff; /* A borda fica branca */
+    background: rgba(255, 255, 255, 0.05); /* Um brilho bem sutil no fundo (opcional) */
+    color: #ffffff; /* Garante que o texto brilhe junto */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Um glow leve para dar profundidade */
+}
+
+/* --- Skills Section com Imagem de Fundo --- */
+.skills-section { 
+    padding: 100px 10%; 
+    position: relative;
+    background-image: url('images/fundo-skills.png'); /* Sua imagem de circuitos */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+/* Overlay para garantir leitura sobre a imagem de fundo das skills */
+.skills-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(6, 9, 12, 0.85); 
+    z-index: 1;
+}
+
+.section-title, .skills-container {
+    position: relative;
+    z-index: 2;
+}
+
+.section-title h2 { margin-bottom: 40px; font-size: 2rem; position: relative; }
+.section-title h2::after {
+    content: ''; display: block; width: 60px; height: 3px;
+    background: var(--accent-cyan); margin-top: 10px;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 25px;
+}
+
+.skill-card {
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+
+.icon-box {
+    width: 75px; height: 75px;
+    background: rgba(26, 34, 42, 0.7); /* Vidro sutil */
+    backdrop-filter: blur(5px);
+    border-radius: 16px;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 2rem; color: var(--icon-color);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.skill-card:hover .icon-box {
+    transform: translateY(-8px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px var(--icon-color);
+    border-color: var(--icon-color);
+    background: rgba(26, 34, 42, 0.9);
+}
+
+/* --- Projetos --- */
+.projects { padding: 80px 8%; }
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.card-info { padding: 25px; }
+
+/* AJUSTE DOS BOTÕES (LINKS) */
+.card-btns { 
+    display: flex; 
+    gap: 12px; 
+    margin-top: 20px;
+}
+
+.card-banner {
+    width: 100%;
+    height: 200px; /* Altura fixa para todos os cards */
+    overflow: hidden;
+    background-color: #1a222a; /* Fundo reserva caso a imagem falhe */
+}
+
+/* A Imagem em si */
+.card-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
+    object-position: center; /* Garante que o centro da imagem sempre apareça */
+    transition: transform 0.5s ease;
+}
+
+/* Efeito de zoom suave ao passar o mouse no card */
+.project-card:hover .card-banner img {
+    transform: scale(1.1);
+}
+
+.btn-sm { 
+    flex: 1;
+    padding: 10px 18px; 
+    border-radius: 8px; 
+    font-size: 0.8rem; 
+    font-weight: bold; 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* BOTÃO VIEW LIVE (PRIMARY) */
+.btn-sm.primary { 
+    background: var(--accent-cyan); 
+    color: var(--bg-dark); 
+    border: 2px solid var(--accent-cyan); 
+}
+
+.btn-sm.primary:hover { 
+    background: transparent;
+    color: var(--accent-cyan);
+    box-shadow: 0 0 15px var(--accent-cyan);
+    transform: translateY(-3px);
+}
+
+/* BOTÃO CODE (OUTLINE) */
+.btn-sm.outline { 
+    background: transparent; 
+    border: 2px solid rgba(255, 255, 255, 0.2); 
+    color: var(--white); 
+}
+
+.btn-sm.outline:hover { 
+    border-color: var(--accent-cyan); 
+    color: var(--accent-cyan); 
+    transform: translateY(-3px);
+}
+
+.card-info { padding: 25px; }
+.card-info h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--white); }
+.card-info p { color: var(--text-gray); font-size: 0.9rem; margin-bottom: 20px; height: 45px; overflow: hidden; }
+
+.card-btns { display: flex; gap: 12px; }
+.btn-sm { padding: 8px 18px; border-radius: 6px; font-size: 0.8rem; font-weight: bold; cursor: pointer; transition: 0.3s; }
+.btn-sm.primary { background: var(--accent-cyan); color: var(--bg-dark); border: none; }
+.btn-sm.outline { background: transparent; border: 1px solid rgba(255, 255, 255, 0.2); color: var(--white); }
+
+.sidebar-social {
+    position: fixed;
+    bottom: 0;
+    left: 40px; /* Distância da borda esquerda */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    z-index: 900;
+}
+
+.sidebar-social a {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.sidebar-social a:hover {
+    color: var(--accent-cyan);
+    transform: translateY(-5px); /* Efeito de subir ao passar o mouse */
+}
+
+/* A linha vertical estilizada que "prende" os ícones no chão */
+.sidebar-line {
+    width: 2px;
+    height: 100px;
+    background-color: var(--accent-cyan);
+    opacity: 0.5;
+}
+
+/* Esconder em telas pequenas para não bater no conteúdo */
+@media (max-width: 1200px) {
+    .sidebar-social {
+        display: none;
+    }
+}
+
+
+/* --- Responsividade --- */
+@media (max-width: 992px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+    .hero-text { text-align: center; }
+    .hero-text h1 { font-size: 2.1rem; }
+    .hero-text p { margin: 0 auto 30px; }
+    .hero-btns { justify-content: center; }
+    .tech-tags { justify-content: center; }
+    .profile-img { width: 220px; height: 290px; }
+}
+
+
+@media (max-width: 992px) {
+    .menu-toggle {
+        display: flex; /* Garante que apareça */
+        flex-direction: column;
+        gap: 5px;
+        z-index: 1100;
+        cursor: pointer;
+    }
+
+    /* Forçando as barras a existirem visualmente */
+    .bar {
+        width: 25px;
+        height: 3px;
+        background-color: var(--white);
+        border-radius: 2px;
+        transition: 0.3s;
+    }
+
+    .nav-list {
+        /* Mudamos de display:none para opacity/visibility para a transição funcionar */
+        display: flex; 
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%; /* Começa escondido na direita */
+        width: 280px; /* COMPACTO: Não ocupa a tela toda */
+        height: 100vh;
+        background: rgba(11, 15, 20, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        justify-content: center;
+        align-items: center;
+        z-index: 1050;
+        gap: 30px;
+        transition: 0.4s ease-in-out; /* Agora a transição vai deslizar */
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    }
+
+    .nav-list a {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--white);
+        text-decoration: none;
+        
+        /* AJUSTE PARA A LINHA: */
+        width: 80%; /* Define que a linha não encosta nas bordas do menu */
+        text-align: center;
+        padding: 15px 0; /* Espaço em cima e embaixo do texto */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Linha sutil */
+        transition: 0.3s;
+    }
+
+    /* Remove a linha do último item (Resume) para não ficar sobrando */
+    .nav-list a:last-child {
+        border-bottom: none;
+    }
+
+    /* Efeito de brilho na linha ao passar o mouse */
+    .nav-list a:hover {
+        color: var(--accent-cyan);
+        border-bottom: 1px solid var(--accent-cyan);
+    }
+
+    /* Quando o menu está aberto (Classe ativada pelo JS) */
+    .nav-list.active {
+        right: 0; /* Desliza para dentro da tela */
+    }
+
+    .nav-list a {
+        font-size: 1.6rem; /* Ajustado para o menu mais compacto */
+        font-weight: 700;
+        color: var(--white);
+        margin: 0;
+        text-decoration: none;
+    }
+
+    .social-icons {
+        display: none;
+    }
+}
